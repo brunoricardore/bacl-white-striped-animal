@@ -3,6 +3,8 @@ import {FormControl, Validators} from "@angular/forms";
 
 import {v4 as uuid} from 'uuid';
 
+type InputType = 'text' | 'password' | 'email';
+
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
@@ -13,26 +15,24 @@ export class InputComponent implements OnInit {
   private _showPassword = false;
 
   private _id!: string;
-  private _type!: 'text'| 'password';
+  public _type!: InputType;
 
   @Input() control!: FormControl;
   @Input() label!: string;
 
   @Input()
-  set type(type: 'text'| 'password') {
-    this._type = type ?? 'text';
+  set type(type: InputType) {
+    this._type = type || 'text';
   }
 
-  get type(): 'text'| 'password' {
-    if (this._type === 'password') {
-      return this._showPassword ? 'text' : 'password'
-    }
+  get type(): InputType {
+    if (this._showPassword) return 'text';
     return this._type;
   }
 
   @Input()
   set id(id: string) {
-    this._id = id ?? uuid();
+    this._id = id || uuid();
   }
 
   get id(): string{

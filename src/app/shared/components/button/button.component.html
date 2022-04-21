@@ -1,3 +1,11 @@
-<button [type]="type" class="primary" [disabled]="disabled" (click)="onClick.emit()" >
-  {{label}}
+<button
+  class="primary"
+  [type]="type"
+  [disabled]="disabled || loading"
+  (click)="onClick.emit()"
+>
+  <span *ngIf="!loading">{{label}}</span>
+  <span *ngIf="loading" class="loading">
+    <div class="loader">Loading...</div>
+  </span>
 </button>

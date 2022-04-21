@@ -10,4 +10,6 @@ export class ButtonComponent {
   @Input() disabled!: boolean;
   @Input() type: 'button'|'submit'|'reset' = 'button'
   @Output() onClick = new EventEmitter();
+
+  @Input() loading = false;
 }

@@ -9,17 +9,36 @@
     <form [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
       <app-input [control]="getFormControl('name')" label="Nome"></app-input>
 
-      <app-input [control]="getFormControl('email')" label="E-mail"></app-input>
+      <app-input type="email" [control]="getFormControl('email')" label="E-mail" email></app-input>
 
       <app-input [control]="getFormControl('password')" label="Senha" type="password">
         <div errorContainer>
-          <pre>
-            {{getFormControl('password').errors | json}}
-          </pre>
+          <ul class="password-error-list" >
+            <li *ngIf="checkPasswordHasError('required') as error">
+              A senha é obrigatória
+            </li>
+            <li *ngIf="checkPasswordHasError('min') as error">
+              A senha deve ser maior que {{error.min}}
+            </li>
+            <li *ngIf="checkPasswordHasError('max') as error">
+              A senha deve ser menor que {{error.max}}
+            </li>
+            <li *ngIf="checkPasswordHasError('noDoubles')">
+              A senha deve ter 2 dígitos adjacentes iguais
+            </li>
+            <li *ngIf="checkPasswordHasError('invalidOrder')">
+              A senha deve conter digitos numa ordem crescente ou de mesmo valor
+            </li>
+          </ul>
         </div>
       </app-input>
 
-      <app-button [disabled]="!formValid" type="submit" label="Validar"></app-button>
+      <app-alert *ngIf="passwordValidated"
+                 [type]="passwordResponseAlertType"
+                 [message]="passwordValidationMessage"
+      ></app-alert>
+
+      <app-button [loading]="requestLoading" [disabled]="!formValid" type="submit" label="Validar"></app-button>
     </form>
 
   </div>

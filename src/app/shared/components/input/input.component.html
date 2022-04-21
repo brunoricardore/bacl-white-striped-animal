@@ -6,6 +6,8 @@
     <img *ngIf="!showPasswordText" src="assets/icons/lock.svg" alt="Show password">
     <img *ngIf="showPasswordText" src="assets/icons/lock-open.svg" alt="Hide password">
   </div>
-
-  <app-input-error *ngIf="isInvalid" [control]="control"></app-input-error>
+  <div #ref>
+    <ng-content select="[errorContainer]"></ng-content>
+  </div>
+  <app-input-error *ngIf="!ref.hasChildNodes() && isInvalid" [control]="control"></app-input-error>
 </div>

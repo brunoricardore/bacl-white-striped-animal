@@ -4,21 +4,24 @@ import {InputComponent} from "./input/input.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import { ButtonComponent } from './button/button.component';
 import { InputErrorComponent } from './input-error/input-error.component';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
     InputComponent,
     ButtonComponent,
-    InputErrorComponent
+    InputErrorComponent,
+    AlertComponent
   ],
   imports: [
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
   ],
   exports: [
     ReactiveFormsModule,
     InputComponent,
-    ButtonComponent
+    ButtonComponent,
+    AlertComponent
   ]
 })
 export class ComponentsModule { }
