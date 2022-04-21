@@ -11,9 +11,15 @@
 
       <app-input [control]="getFormControl('email')" label="E-mail"></app-input>
 
-      <app-input [control]="getFormControl('password')" label="Senha" type="password" ></app-input>
+      <app-input [control]="getFormControl('password')" label="Senha" type="password">
+        <div errorContainer>
+          <pre>
+            {{getFormControl('password').errors | json}}
+          </pre>
+        </div>
+      </app-input>
 
-      <app-button [disabled]="!formValid" type="submit" label="Validar" ></app-button>
+      <app-button [disabled]="!formValid" type="submit" label="Validar"></app-button>
     </form>
 
   </div>
