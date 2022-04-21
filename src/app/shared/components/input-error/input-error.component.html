@@ -1,0 +1,4 @@
+<div class="input-error" #ref><ng-content></ng-content></div>
+<span class="input-error" *ngIf="ref.children.length == 0">
+  {{errorMessage}}
+</span>

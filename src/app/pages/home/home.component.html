@@ -1,0 +1,20 @@
+<div class="block-centered">
+
+  <div class="inner">
+
+    <img class="logo" src="assets/images/logo.svg" alt="logo">
+
+    <h1>Olá, valide sua senha</h1>
+
+    <form [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
+      <app-input [control]="getFormControl('name')" label="Nome"></app-input>
+
+      <app-input [control]="getFormControl('email')" label="E-mail"></app-input>
+
+      <app-input [control]="getFormControl('password')" label="Senha" type="password" ></app-input>
+
+      <app-button [disabled]="!formValid" type="submit" label="Validar" ></app-button>
+    </form>
+
+  </div>
+</div>

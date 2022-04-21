@@ -1,0 +1,11 @@
+<div class="form-control">
+  <label [class.ng-invalid]="isInvalid" [for]="id">{{label}} {{isRequired ? '*' : '' }}</label>
+  <input [id]="id" [type]="type" [formControl]="control">
+
+  <div (click)="togglePasswordInput()" class="visibility-switcher" *ngIf="type === 'password' || showPassword">
+    <img *ngIf="!showPasswordText" src="assets/icons/lock.svg" alt="Show password">
+    <img *ngIf="showPasswordText" src="assets/icons/lock-open.svg" alt="Hide password">
+  </div>
+
+  <app-input-error *ngIf="isInvalid" [control]="control"></app-input-error>
+</div>
