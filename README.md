@@ -17,7 +17,7 @@ Foram usados para solucionar o problema:
 - Facades
 - Some Rxjs operators
 
-####Bruno Rebelo Ricardo
-####brunoricardore@gmail.com
-####[(48)991338594](https://wa.link/0f64vv)
+#### Bruno Rebelo Ricardo
+#### brunoricardore@gmail.com
+#### [(48)991338594](https://wa.link/0f64vv)
 [<img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" width="80" height="80">](https://www.linkedin.com/in/brunorricardo/)
