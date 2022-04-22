@@ -12,7 +12,7 @@ export class InputErrorComponent {
   @Input() control!: FormControl;
 
   get errorMessage(): string {
-    const firstKey = Object.keys({...this.control.errors})[0];
+    const firstKey = Object.keys({...this.control?.errors})[0];
     return ErrorList[firstKey];
   }
 

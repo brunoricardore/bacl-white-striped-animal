@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 
-import {v4 as uuid} from 'uuid';
+import * as uuid from 'uuid';
 
 type InputType = 'text' | 'password' | 'email';
 
@@ -31,11 +31,12 @@ export class InputComponent implements OnInit {
   }
 
   @Input()
-  set id(id: string) {
-    this._id = id || uuid();
+  set inputId(id: string) {
+    this._id = id ;
   }
 
   get id(): string{
+    if (!this._id) this._id = uuid.v4();
     return this._id;
   }
 
@@ -45,11 +46,11 @@ export class InputComponent implements OnInit {
   }
 
   get isRequired(): boolean {
-    return this.control.hasValidator(Validators.required);
+    return this.control?.hasValidator(Validators.required);
   }
 
   get isInvalid(): boolean {
-    return this.control.invalid && this.control.touched ;
+    return this.control?.invalid && this.control?.touched ;
   }
 
   get showPasswordText(): boolean{

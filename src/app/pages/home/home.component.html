@@ -11,7 +11,7 @@
 
       <app-input type="email" [control]="getFormControl('email')" label="E-mail" email></app-input>
 
-      <app-input [control]="getFormControl('password')" label="Senha" type="password">
+      <app-input inputId="password" [control]="getFormControl('password')" label="Senha" type="password">
         <div errorContainer>
           <ul class="password-error-list" >
             <li *ngIf="checkPasswordHasError('required') as error">

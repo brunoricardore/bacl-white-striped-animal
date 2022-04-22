@@ -43,6 +43,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       .pipe(
         takeUntil(this.$destroy)
       ).subscribe(val => {
+      console.log('pass value changed', val);
+      if(!val) return;
       this.getFormControl('password').setValue(val.replace(/[^0-9]/g, ''), {emitEvent: false})
     });
   }
@@ -94,6 +96,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   submit(): void {
+
+    if (this.formGroup.invalid) return;
+
     this.passwordValidated = undefined;
     this.requestLoading = true;
     const data = <FormData>this.formGroup.value;
